@@ -7,7 +7,7 @@
 #
 Name     : xsane
 Version  : 0.999
-Release  : 1
+Release  : 2
 URL      : https://gitlab.com/sane-project/frontend/xsane/-/archive/0.999/xsane-0.999.tar.bz2
 Source0  : https://gitlab.com/sane-project/frontend/xsane/-/archive/0.999/xsane-0.999.tar.bz2
 Summary  : An X Window System front-end for the SANE scanner interface.
@@ -19,6 +19,7 @@ Requires: xsane-locales = %{version}-%{release}
 Requires: xsane-man = %{version}-%{release}
 BuildRequires : buildreq-configure
 BuildRequires : libjpeg-turbo-dev
+BuildRequires : pkgconfig(gimp-2.0)
 BuildRequires : pkgconfig(gtk+-2.0)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : sane-backends-dev
@@ -110,7 +111,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1736468514
+export SOURCE_DATE_EPOCH=1736468976
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -126,7 +127,7 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 export GOAMD64=v2
-%configure --disable-static
+%configure --disable-static --enable-gimp
 make  %{?_smp_mflags}
 
 %install
@@ -144,7 +145,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1736468514
+export SOURCE_DATE_EPOCH=1736468976
 rm -rf %{buildroot}
 export GOAMD64=v2
 GOAMD64=v2
