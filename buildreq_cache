@@ -1,0 +1,4 @@
+0.999
+libjpeg-turbo-dev
+pkgconfig(gtk+-2.0)
+pkgconfig(zlib)

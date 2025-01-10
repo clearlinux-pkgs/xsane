@@ -1,0 +1,16 @@
+Configure miss: TIFFOpen in -ltiff
+Configure miss: cmsOpenProfileFromFile in -llcms
+Configure miss: gimp-config
+Configure miss: gimptool
+Configure miss: libc.h
+Configure miss: libc.h presence
+Configure miss: libc.h usability
+Configure miss: libgimp/gimp.h
+Configure miss: libgimp/gimp.h presence
+Configure miss: libgimp/gimp.h usability
+Configure miss: libgimp/gimpfeatures.h
+Configure miss: libgimp/gimpfeatures.h presence
+Configure miss: libgimp/gimpfeatures.h usability
+Configure miss: os2.h
+Configure miss: os2.h presence
+Configure miss: os2.h usability
