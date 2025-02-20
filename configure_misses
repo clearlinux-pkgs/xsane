@@ -1,4 +1,3 @@
-Configure miss: TIFFOpen in -ltiff
 Configure miss: cmsOpenProfileFromFile in -llcms
 Configure miss: libc.h
 Configure miss: libc.h presence

@@ -9,4 +9,5 @@ libjpeg.so.62
 libm.so.6
 libpng16.so.16
 libsane.so.1
+libtiff.so.6
 libz.so.1
