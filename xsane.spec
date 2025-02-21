@@ -7,7 +7,7 @@
 #
 Name     : xsane
 Version  : 0.999
-Release  : 3
+Release  : 4
 URL      : https://gitlab.com/sane-project/frontend/xsane/-/archive/0.999/xsane-0.999.tar.bz2
 Source0  : https://gitlab.com/sane-project/frontend/xsane/-/archive/0.999/xsane-0.999.tar.bz2
 Summary  : An X Window System front-end for the SANE scanner interface.
@@ -21,6 +21,7 @@ BuildRequires : buildreq-configure
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : pkgconfig(gimp-2.0)
 BuildRequires : pkgconfig(gtk+-2.0)
+BuildRequires : pkgconfig(lcms2)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : sane-backends-dev
 BuildRequires : tiff-dev
@@ -45,6 +46,7 @@ Patch15: backport-fedora-xsane-0.999-snprintf-update.patch
 Patch16: backport-fedora-xsane-0.999-signal-handling.patch
 Patch17: backport-fedora-0001-Follow-new-convention-for-registering-gimp-plugin.patch
 Patch18: backport-fedora-xsane-configure-c99.patch
+Patch19: backport-debian-lcms2_configure.patch
 
 %description
 XSane is an X based interface for the SANE (Scanner Access Now Easy)
@@ -106,13 +108,14 @@ cd %{_builddir}/xsane-0.999
 %patch -P 16 -p1
 %patch -P 17 -p1
 %patch -P 18 -p1
+%patch -P 19 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1740089477
+export SOURCE_DATE_EPOCH=1740158642
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -128,7 +131,8 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 export GOAMD64=v2
-%configure --disable-static --enable-gimp
+%configure --disable-static --enable-gimp \
+--enable-lcms2
 make  %{?_smp_mflags}
 
 %install
@@ -146,15 +150,22 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1740089477
+export SOURCE_DATE_EPOCH=1740158642
 rm -rf %{buildroot}
 export GOAMD64=v2
 GOAMD64=v2
 %make_install
 %find_lang xsane
+## install_append content
+# Add a symlink to the gimp plugins directory
+pluginsdir=%{buildroot}$(eval $(find . -type f -name config.log -exec grep -h ^GIMP_PLUGIN_DIR= {} +) && echo $GIMP_PLUGIN_DIR)/plug-ins
+mkdir -p "${pluginsdir}/xsane"
+ln -sr %{buildroot}/usr/bin/xsane "${pluginsdir}/xsane/xsane"
+## install_append end
 
 %files
 %defattr(-,root,root,-)
+/usr/lib64/gimp/2.0/plug-ins/xsane/xsane
 
 %files bin
 %defattr(-,root,root,-)

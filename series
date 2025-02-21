@@ -16,3 +16,4 @@ backport-fedora-xsane-0.999-snprintf-update.patch
 backport-fedora-xsane-0.999-signal-handling.patch
 backport-fedora-0001-Follow-new-convention-for-registering-gimp-plugin.patch
 backport-fedora-xsane-configure-c99.patch
+backport-debian-lcms2_configure.patch
