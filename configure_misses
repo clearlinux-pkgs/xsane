@@ -1,3 +1,5 @@
+Configure miss: GIMP - version >= 1.0.0
+Configure miss: gimp-config
 Configure miss: libc.h
 Configure miss: libc.h presence
 Configure miss: libc.h usability
