@@ -7,7 +7,7 @@
 #
 Name     : xsane
 Version  : 0.999
-Release  : 4
+Release  : 5
 URL      : https://gitlab.com/sane-project/frontend/xsane/-/archive/0.999/xsane-0.999.tar.bz2
 Source0  : https://gitlab.com/sane-project/frontend/xsane/-/archive/0.999/xsane-0.999.tar.bz2
 Summary  : An X Window System front-end for the SANE scanner interface.
