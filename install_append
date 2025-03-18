@@ -1,4 +1,4 @@
 # Add a symlink to the gimp plugins directory
-pluginsdir=%{buildroot}$(eval $(find . -type f -name config.log -exec grep -h ^GIMP_PLUGIN_DIR= {} +) && echo $GIMP_PLUGIN_DIR)/plug-ins
-mkdir -p "${pluginsdir}/xsane"
-ln -sr %{buildroot}/usr/bin/xsane "${pluginsdir}/xsane/xsane"
+#pluginsdir=%{buildroot}$(eval $(find . -type f -name config.log -exec grep -h ^GIMP_PLUGIN_DIR= {} +) && echo $GIMP_PLUGIN_DIR)/plug-ins
+#mkdir -p "${pluginsdir}/xsane"
+#ln -sr %{buildroot}/usr/bin/xsane "${pluginsdir}/xsane/xsane"

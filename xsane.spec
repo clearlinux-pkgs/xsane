@@ -7,7 +7,7 @@
 #
 Name     : xsane
 Version  : 0.999
-Release  : 6
+Release  : 7
 URL      : https://gitlab.com/sane-project/frontend/xsane/-/archive/0.999/xsane-0.999.tar.bz2
 Source0  : https://gitlab.com/sane-project/frontend/xsane/-/archive/0.999/xsane-0.999.tar.bz2
 Summary  : An X Window System front-end for the SANE scanner interface.
@@ -115,7 +115,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1742319947
+export SOURCE_DATE_EPOCH=1742322068
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -150,7 +150,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1742319947
+export SOURCE_DATE_EPOCH=1742322068
 rm -rf %{buildroot}
 export GOAMD64=v2
 GOAMD64=v2
@@ -158,14 +158,13 @@ GOAMD64=v2
 %find_lang xsane
 ## install_append content
 # Add a symlink to the gimp plugins directory
-pluginsdir=%{buildroot}$(eval $(find . -type f -name config.log -exec grep -h ^GIMP_PLUGIN_DIR= {} +) && echo $GIMP_PLUGIN_DIR)/plug-ins
-mkdir -p "${pluginsdir}/xsane"
-ln -sr %{buildroot}/usr/bin/xsane "${pluginsdir}/xsane/xsane"
+#pluginsdir=%{buildroot}$(eval $(find . -type f -name config.log -exec grep -h ^GIMP_PLUGIN_DIR= {} +) && echo $GIMP_PLUGIN_DIR)/plug-ins
+#mkdir -p "${pluginsdir}/xsane"
+#ln -sr %{buildroot}/usr/bin/xsane "${pluginsdir}/xsane/xsane"
 ## install_append end
 
 %files
 %defattr(-,root,root,-)
-/plug-ins/xsane/xsane
 
 %files bin
 %defattr(-,root,root,-)
